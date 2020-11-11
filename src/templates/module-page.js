@@ -10,6 +10,7 @@ import { Link } from "gatsby"
 
 const shortcodes = { Link }; // Common components here
 
+// Only display the module title on the first page
 function ModuleTitle(props){
     if(props.index==0){
         return <h1>{props.moduleTitle}</h1>
