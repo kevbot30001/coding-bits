@@ -1,17 +1,17 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ContainerFixed from "../components/container-fixed";
+import LandingBanner from "../components/landing-banner";
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/intro-to-js/1-intro">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+    <SEO title="Home"/>
+    <LandingBanner/>
+    <ContainerFixed>
+      Jude
+    </ContainerFixed>
   </Layout>
 )
 

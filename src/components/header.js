@@ -1,34 +1,17 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from "react";
+import PropTypes from "prop-types";
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+import ContainerFixed from "./container-fixed";
+import * as S from "./header.styles";
+
+const Header = ({ siteTitle, link }) => (
+  <S.HeaderWrapper>
+    <ContainerFixed>
+      <S.HeaderBrand to={link}>
+        <S.BrandName>{siteTitle}</S.BrandName>
+      </S.HeaderBrand>
+    </ContainerFixed>
+  </S.HeaderWrapper>
 )
 
 Header.propTypes = {
@@ -37,6 +20,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   siteTitle: ``,
+  link: `/`,
 }
 
-export default Header
+export default Header;

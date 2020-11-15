@@ -33,10 +33,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // you'll call `createPage` for each result
     posts.forEach(({ node }, index) => {
         createPage({
-        path: node.frontmatter.path,
-        // This component will wrap our MDX content
-        component: path.resolve(`./src/templates/module-page.js`),
-        context: { id: node.id },
+            path: node.frontmatter.path,
+            // This component will wrap our MDX content
+            component: path.resolve(`./src/templates/module-page.js`),
+            context: { id: node.id },
         })
     })
 }

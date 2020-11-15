@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
@@ -12,7 +11,7 @@ const shortcodes = { Link }; // Common components here
 
 // Only display the module title on the first page
 function ModuleTitle(props){
-    if(props.index==0){
+    if(props.index===0){
         return <h1>{props.moduleTitle}</h1>
     }
 }
