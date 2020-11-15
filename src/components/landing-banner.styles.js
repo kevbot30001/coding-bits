@@ -14,4 +14,9 @@ export const BannerContent = styled.div`
         font-weight: 900;
         font-size: 4rem;
     }
+    .banner-subtitle{
+        color: white;
+        font-size: large;
+        font-weight: 500;
+    }
 `
