@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.header`
   padding: 1rem 0;
   top:0;
   width: 100%;
+  border-bottom: 1px solid #e1e8ed;
 `
 
 export const HeaderColumnWrapper = styled.div`
@@ -15,7 +16,7 @@ export const HeaderColumnWrapper = styled.div`
 `
 
 export const HeaderLeftWrapper = styled.div`
-  width: 298px;
+  width: calc(298px - 2rem);
 `
 
 export const HeaderMiddleWrapper = styled.div`

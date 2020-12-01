@@ -9,6 +9,8 @@ import PageColumnWrapper from '../components/page-column-wrapper';
 import PageLeftWrapper from '../components/page-left-wrapper';
 import PageMiddleWrapper from '../components/page-middle-wrapper';
 import PageRightWrapper from '../components/page-right-wrapper';
+import ModuleSidebar from '../components/module-sidebar';
+import ModuleContentWrapper from '../components/module-content-wrapper';
 import ModuleHeader from "../components/module-header";
 import { Link } from "gatsby"
 
@@ -19,14 +21,18 @@ export default function Template({ data : { mdx } }){
         <Layout>
             <SEO title={mdx.frontmatter.title}/>
             <PageColumnWrapper>
-                <PageLeftWrapper></PageLeftWrapper>
+                <PageLeftWrapper>
+                    <ModuleSidebar></ModuleSidebar>
+                </PageLeftWrapper>
                 <PageMiddleWrapper>
-                    <ModuleHeader index={mdx.frontmatter.index} moduleTitle={mdx.frontmatter.moduleTitle}/>
-                    <h2>{mdx.frontmatter.title}</h2>
-                    <MDXProvider components={shortcodes}>
-                        <MDXRenderer>{mdx.body}</MDXRenderer>
-                    </MDXProvider>
-                    <Link to="/">Retour</Link>
+                    <ModuleContentWrapper>
+                        <ModuleHeader index={mdx.frontmatter.index} moduleTitle={mdx.frontmatter.moduleTitle}/>
+                        <h2>{mdx.frontmatter.title}</h2>
+                        <MDXProvider components={shortcodes}>
+                            <MDXRenderer>{mdx.body}</MDXRenderer>
+                        </MDXProvider>
+                        <Link to="/">Retour</Link>
+                    </ModuleContentWrapper>
                 </PageMiddleWrapper>
                 <PageRightWrapper></PageRightWrapper>
             </PageColumnWrapper>
