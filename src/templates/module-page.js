@@ -5,29 +5,31 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import PageColumnWrapper from '../components/page-column-wrapper';
+import PageLeftWrapper from '../components/page-left-wrapper';
+import PageMiddleWrapper from '../components/page-middle-wrapper';
+import PageRightWrapper from '../components/page-right-wrapper';
+import ModuleHeader from "../components/module-header";
 import { Link } from "gatsby"
 
 const shortcodes = { Link }; // Common components here
 
-// Only display the module title on the first page
-function ModuleTitle(props){
-    if(props.index===0){
-        return <h1>{props.moduleTitle}</h1>
-    }
-}
-
 export default function Template({ data : { mdx } }){
     return (
         <Layout>
-            <div className="blog-post-container">
-                <SEO title={mdx.frontmatter.title} />
-                <ModuleTitle index={mdx.frontmatter.index} moduleTitle={mdx.frontmatter.moduleTitle}/>
-                <h2>{mdx.frontmatter.title}</h2>
-                <MDXProvider components={shortcodes}>
-                    <MDXRenderer>{mdx.body}</MDXRenderer>
-                </MDXProvider>
-                <Link to="/">Retour</Link>
-            </div>
+            <SEO title={mdx.frontmatter.title}/>
+            <PageColumnWrapper>
+                <PageLeftWrapper></PageLeftWrapper>
+                <PageMiddleWrapper>
+                    <ModuleHeader index={mdx.frontmatter.index} moduleTitle={mdx.frontmatter.moduleTitle}/>
+                    <h2>{mdx.frontmatter.title}</h2>
+                    <MDXProvider components={shortcodes}>
+                        <MDXRenderer>{mdx.body}</MDXRenderer>
+                    </MDXProvider>
+                    <Link to="/">Retour</Link>
+                </PageMiddleWrapper>
+                <PageRightWrapper></PageRightWrapper>
+            </PageColumnWrapper>
         </Layout>
     )
 }
