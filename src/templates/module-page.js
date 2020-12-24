@@ -9,30 +9,32 @@ import PageColumnWrapper from '../components/page-column-wrapper';
 import PageLeftWrapper from '../components/page-left-wrapper';
 import PageMiddleWrapper from '../components/page-middle-wrapper';
 import PageRightWrapper from '../components/page-right-wrapper';
-import ModuleSidebar from '../components/module-sidebar';
-import ModuleContentWrapper from '../components/module-content-wrapper';
-import ModuleHeader from "../components/module-header";
+import SectionIndex from '../components/section-index';
+import SectionHeader from "../components/section-header";
+import SectionSidebar from '../components/section-sidebar';
+import SectionContentWrapper from '../components/section-content-wrapper';
 import { Link } from "gatsby"
 
 const shortcodes = { Link }; // Common components here
 
-export default function Template({ data : { mdx } }){
+export default function Template({ data }){
     return (
         <Layout>
-            <SEO title={mdx.frontmatter.title}/>
+            <SEO title={data.post.frontmatter.title}/>
             <PageColumnWrapper>
                 <PageLeftWrapper>
-                    <ModuleSidebar></ModuleSidebar>
+                    <SectionSidebar>
+                        <SectionIndex index={data.sectionIndexList.edges}/>
+                    </SectionSidebar>
                 </PageLeftWrapper>
                 <PageMiddleWrapper>
-                    <ModuleContentWrapper>
-                        <ModuleHeader index={mdx.frontmatter.index} moduleTitle={mdx.frontmatter.moduleTitle}/>
-                        <h1>{mdx.frontmatter.title}</h1>
+                    <SectionContentWrapper>
+                        <SectionHeader moduleTitle={data.post.frontmatter.moduleTitle} sectionTitle={data.post.frontmatter.title}/>
                         <MDXProvider components={shortcodes}>
-                            <MDXRenderer>{mdx.body}</MDXRenderer>
+                            <MDXRenderer>{data.post.body}</MDXRenderer>
                         </MDXProvider>
                         <Link to="/">Retour</Link>
-                    </ModuleContentWrapper>
+                    </SectionContentWrapper>
                 </PageMiddleWrapper>
                 <PageRightWrapper></PageRightWrapper>
             </PageColumnWrapper>
@@ -41,8 +43,8 @@ export default function Template({ data : { mdx } }){
 }
 
 export const pageQuery = graphql`
-    query BlogPostQuery($id: String) {
-        mdx(id: { eq: $id }) {
+    query BlogPostQuery($id: String, $module: String) {
+        post: mdx(id: { eq: $id }) {
             id
             body
             frontmatter {
@@ -52,7 +54,19 @@ export const pageQuery = graphql`
                 moduleIndex
                 moduleTitle
                 title
-                index
+                sectionIndex
+            }
+        }
+        sectionIndexList: allMdx(filter: {frontmatter: {module: {eq: $module}}} sort: {fields: frontmatter___sectionIndex, order: ASC}) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        sectionIndex
+                        path
+                    }
+                }
             }
         }
     }

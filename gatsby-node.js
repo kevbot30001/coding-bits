@@ -19,6 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                         id
                         frontmatter {
                             path
+                            module
                         }
                     }
                 }
@@ -30,13 +31,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
     // Create blog post pages.
     const posts = result.data.allMdx.edges
+    console.log(posts);
     // you'll call `createPage` for each result
     posts.forEach(({ node }, index) => {
         createPage({
             path: node.frontmatter.path,
             // This component will wrap our MDX content
             component: path.resolve(`./src/templates/module-page.js`),
-            context: { id: node.id },
+            context: { id: node.id, module: node.frontmatter.module },
         })
     })
 }

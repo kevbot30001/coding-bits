@@ -8,8 +8,8 @@ const ModuleList = () => {
     const data = useStaticQuery(
         graphql`
             query {
-                allMdx(filter: {frontmatter: {index: {eq: 0}}}, sort: {fields: frontmatter___moduleIndex, order: ASC}) {
-                edges {
+                allMdx(filter: {frontmatter: {sectionIndex: {eq: 0}}}, sort: {fields: frontmatter___moduleIndex, order: ASC}) {
+                    edges {
                         node {
                             id
                             excerpt
@@ -27,7 +27,6 @@ const ModuleList = () => {
     )
 
     let modules = data.allMdx.edges;
-    console.log(modules);
 
     return (
         <S.ModuleList>
