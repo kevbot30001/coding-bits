@@ -9,7 +9,7 @@ const ModuleTitle = ({ index, title }) => {
     }
 }
 
-const ModuleHeader = ({ index, moduleTitle, sectionTitle }) => (
+const ModuleHeader = ({ index, moduleTitle }) => (
     <ModuleTitle index={index} title={moduleTitle}/>
 )
 

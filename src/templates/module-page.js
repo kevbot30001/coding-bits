@@ -27,7 +27,7 @@ export default function Template({ data : { mdx } }){
                 <PageMiddleWrapper>
                     <ModuleContentWrapper>
                         <ModuleHeader index={mdx.frontmatter.index} moduleTitle={mdx.frontmatter.moduleTitle}/>
-                        <h2>{mdx.frontmatter.title}</h2>
+                        <h1>{mdx.frontmatter.title}</h1>
                         <MDXProvider components={shortcodes}>
                             <MDXRenderer>{mdx.body}</MDXRenderer>
                         </MDXProvider>
