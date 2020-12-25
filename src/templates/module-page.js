@@ -5,36 +5,49 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import PageColumnWrapper from '../components/page-column-wrapper';
+import PageLeftWrapper from '../components/page-left-wrapper';
+import PageMiddleWrapper from '../components/page-middle-wrapper';
+import PageRightWrapper from '../components/page-right-wrapper';
+import SectionIndex from '../components/section-index';
+import SectionHeader from "../components/section-header";
+import SectionSidebar from '../components/section-sidebar';
+import SectionContentWrapper from '../components/section-content-wrapper';
+import SectionTOC from '../components/section-toc';
 import { Link } from "gatsby"
 
-const shortcodes = { Link }; // Common components here
+const shortcodes = { Link };
 
-// Only display the module title on the first page
-function ModuleTitle(props){
-    if(props.index===0){
-        return <h1>{props.moduleTitle}</h1>
-    }
-}
-
-export default function Template({ data : { mdx } }){
+export default function Template({ data }){
     return (
         <Layout>
-            <div className="blog-post-container">
-                <SEO title={mdx.frontmatter.title} />
-                <ModuleTitle index={mdx.frontmatter.index} moduleTitle={mdx.frontmatter.moduleTitle}/>
-                <h2>{mdx.frontmatter.title}</h2>
-                <MDXProvider components={shortcodes}>
-                    <MDXRenderer>{mdx.body}</MDXRenderer>
-                </MDXProvider>
-                <Link to="/">Retour</Link>
-            </div>
+            <SEO title={data.post.frontmatter.title}/>
+            <PageColumnWrapper>
+                <PageLeftWrapper>
+                    <SectionSidebar>
+                        <SectionIndex index={data.sectionIndexList.edges}/>
+                    </SectionSidebar>
+                </PageLeftWrapper>
+                <PageMiddleWrapper>
+                    <SectionContentWrapper>
+                        <SectionHeader moduleTitle={data.post.frontmatter.moduleTitle} sectionTitle={data.post.frontmatter.title}/>
+                        <MDXProvider components={shortcodes}>
+                            <MDXRenderer>{data.post.body}</MDXRenderer>
+                        </MDXProvider>
+                        <Link to="/">Retour</Link>
+                    </SectionContentWrapper>
+                </PageMiddleWrapper>
+                <PageRightWrapper>
+                    <SectionTOC tableOfContents={data.post.tableOfContents} path={data.post.frontmatter.path}/>
+                </PageRightWrapper>
+            </PageColumnWrapper>
         </Layout>
     )
 }
 
 export const pageQuery = graphql`
-    query BlogPostQuery($id: String) {
-        mdx(id: { eq: $id }) {
+    query BlogPostQuery($id: String, $module: String) {
+        post: mdx(id: { eq: $id }) {
             id
             body
             frontmatter {
@@ -44,7 +57,20 @@ export const pageQuery = graphql`
                 moduleIndex
                 moduleTitle
                 title
-                index
+                sectionIndex
+            }
+            tableOfContents
+        }
+        sectionIndexList: allMdx(filter: {frontmatter: {module: {eq: $module}}} sort: {fields: frontmatter___sectionIndex, order: ASC}) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        title
+                        sectionIndex
+                        path
+                    }
+                }
             }
         }
     }

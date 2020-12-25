@@ -19,6 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                         id
                         frontmatter {
                             path
+                            module
                         }
                     }
                 }
@@ -36,7 +37,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             path: node.frontmatter.path,
             // This component will wrap our MDX content
             component: path.resolve(`./src/templates/module-page.js`),
-            context: { id: node.id },
+            context: { id: node.id, module: node.frontmatter.module },
         })
     })
 }
