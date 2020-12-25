@@ -13,9 +13,10 @@ import SectionIndex from '../components/section-index';
 import SectionHeader from "../components/section-header";
 import SectionSidebar from '../components/section-sidebar';
 import SectionContentWrapper from '../components/section-content-wrapper';
+import SectionTOC from '../components/section-toc';
 import { Link } from "gatsby"
 
-const shortcodes = { Link }; // Common components here
+const shortcodes = { Link };
 
 export default function Template({ data }){
     return (
@@ -36,7 +37,9 @@ export default function Template({ data }){
                         <Link to="/">Retour</Link>
                     </SectionContentWrapper>
                 </PageMiddleWrapper>
-                <PageRightWrapper></PageRightWrapper>
+                <PageRightWrapper>
+                    <SectionTOC tableOfContents={data.post.tableOfContents} path={data.post.frontmatter.path}/>
+                </PageRightWrapper>
             </PageColumnWrapper>
         </Layout>
     )
@@ -56,6 +59,7 @@ export const pageQuery = graphql`
                 title
                 sectionIndex
             }
+            tableOfContents
         }
         sectionIndexList: allMdx(filter: {frontmatter: {module: {eq: $module}}} sort: {fields: frontmatter___sectionIndex, order: ASC}) {
             edges {

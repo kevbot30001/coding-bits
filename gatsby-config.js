@@ -20,6 +20,7 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -30,8 +31,22 @@ module.exports = {
               maxWidth: 1920,
             },
           },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: 100,
+              icon: false
+            },
+          },
         ],
       },
+    },
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -75,
+        duration: 1
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

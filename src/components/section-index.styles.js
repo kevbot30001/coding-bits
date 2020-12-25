@@ -30,7 +30,7 @@ export const SectionItemLinkActiveStyle = {
 };
 
 export const SectionIndex = styled.div`
-    padding-top: 4rem;
+    margin-top: 4rem;
     padding-left: 2rem;
 `;
 
