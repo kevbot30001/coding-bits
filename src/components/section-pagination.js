@@ -10,21 +10,21 @@ const SectionPaginationLink = ({ to, title, direction }) => {
     if(direction==="left"){
         return (
             <S.SectionPaginationLink to={to} className="left">
-                <S.SectionPaginationIcon>
+                <S.SectionPaginationIcon className="icon">
                     <ArrowLeft/>
                 </S.SectionPaginationIcon>
-                <S.SectionPaginationText className="text">
+                <S.SectionPaginationContent className="text">
                     {title}
-                </S.SectionPaginationText>
+                </S.SectionPaginationContent>
             </S.SectionPaginationLink>
         )
     }else{
         return (
             <S.SectionPaginationLink to={to} className="right">
-                <S.SectionPaginationText className="text">
+                <S.SectionPaginationContent className="text">
                     {title}
-                </S.SectionPaginationText>
-                <S.SectionPaginationIcon>
+                </S.SectionPaginationContent>
+                <S.SectionPaginationIcon className="icon">
                     <ArrowRight/>
                 </S.SectionPaginationIcon>
             </S.SectionPaginationLink>

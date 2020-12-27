@@ -34,11 +34,17 @@ export const SectionPaginationLink = styled(Link)`
         .text{
             justify-content: flex-end;
         }
+        .icon{
+            padding-right: 1.25rem;
+        }
         grid-area: "left";
     }
     &.right{
         .text{
             justify-content: flex-start;
+        }
+        .icon{
+            padding-left: 1.25rem;
         }
         grid-area: "right";
     }
@@ -64,7 +70,7 @@ export const SectionPaginationIcon = styled.div`
     }
 `;
 
-export const SectionPaginationText = styled.div`
+export const SectionPaginationContent = styled.div`
     display: flex;
     align-items: center;
     flex: 1;
