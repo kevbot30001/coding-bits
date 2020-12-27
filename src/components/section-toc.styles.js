@@ -23,9 +23,12 @@ export const TOCItem = styled.li`
     position: relative;
     color: #74818D;
     margin: 0;
+    max-width: 224px;
     font-size: 0.85rem;
     font-weight: 600;
-    overflow: hidden;
+    overflow-x: hidden;
+    padding-right: 1.3rem;
+    //padding-left: 1.3 rem base with 0.85rem increments
     &.is-current{
         color: black;
         &::before{
@@ -44,4 +47,7 @@ export const TOCItemLink = styled(AnchorLink)`
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
     display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 `
