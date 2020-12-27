@@ -16,8 +16,27 @@ Content
 
 <BlockLink to="https://www.color-hex.com/color/2f2f30" title="Color link"/>
 
-Hello, this is a test.
-Hello, this is a test.
+```jsx {1,4-5}
+import React, { useState } from "react";
+function Example() {
+    const [count, setCount] = useState(0);    
+	return (
+        <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>
+            Click me
+        </button>
+        </div>
+    );
+}
+```
+ok
+
+Hello, this is a 
+```jsx
+test
+```
+Hello, this is a ```test```.
 
 Hello, this is a test.
 Hello, this is a test.
@@ -25,7 +44,6 @@ Hello, this is a test.
 Hello, this is a test.
 
 v
-
 vHello, this is a test.
 Hello, this is a test.
 
