@@ -3,17 +3,30 @@ import PropTypes from "prop-types";
 
 import * as S from "./section-pagination.styles";
 
+import ArrowLeft from "../svg/arrow-left.svg";
+import ArrowRight from "../svg/arrow-right.svg";
+
 const SectionPaginationLink = ({ to, title, direction }) => {
     if(direction==="left"){
         return (
             <S.SectionPaginationLink to={to} className="left">
-                {title}
+                <S.SectionPaginationIcon>
+                    <ArrowLeft/>
+                </S.SectionPaginationIcon>
+                <S.SectionPaginationText className="text">
+                    {title}
+                </S.SectionPaginationText>
             </S.SectionPaginationLink>
         )
     }else{
         return (
             <S.SectionPaginationLink to={to} className="right">
-                {title}
+                <S.SectionPaginationText className="text">
+                    {title}
+                </S.SectionPaginationText>
+                <S.SectionPaginationIcon>
+                    <ArrowRight/>
+                </S.SectionPaginationIcon>
             </S.SectionPaginationLink>
         )
     }

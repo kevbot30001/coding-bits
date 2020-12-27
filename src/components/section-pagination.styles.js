@@ -18,6 +18,7 @@ export const SectionPagination = styled.div`
 `;
 
 export const SectionPaginationLink = styled(Link)`
+    display: flex;
     border: 1px solid #CAD0D5;
     border-radius: 2px;
     color: #48494B;
@@ -25,13 +26,21 @@ export const SectionPaginationLink = styled(Link)`
     place-self: stretch;
     text-decoration: none;  
     font-weight: 600;
+    svg{
+        transition: fill 0.1s ease-in;
+        fill: #48494B;
+    }
     &.left{
+        .text{
+            justify-content: flex-end;
+        }
         grid-area: "left";
-        text-align: right;
     }
     &.right{
+        .text{
+            justify-content: flex-start;
+        }
         grid-area: "right";
-        text-align: left;
     }
     transition: color 0.1s ease-in;
     transition: border-color 0.1s ease-in;
@@ -40,5 +49,23 @@ export const SectionPaginationLink = styled(Link)`
         transition: border-color 0.1s ease-in;
         color: black;
         border-color: black;
+        svg{
+            transition: fill 0.1s ease-in;
+            fill: black;
+        }
     }
+`;
+
+export const SectionPaginationIcon = styled.div`
+    display: flex;
+    flex: 0;
+    svg{
+        margin: auto 0;
+    }
+`;
+
+export const SectionPaginationText = styled.div`
+    display: flex;
+    align-items: center;
+    flex: 1;
 `;
