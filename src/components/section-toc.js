@@ -29,11 +29,19 @@ const TOCList = ({ items, path }) => (
     </S.TOCList>
 )
 
-const SectionTOC = ({ tableOfContents, path }) => (
-        <S.SectionTOC>
-            <TOCList items={tableOfContents.items} path={path}/>
-        </S.SectionTOC>
-)
+const SectionTOC = ({ tableOfContents, path }) => {
+    if(tableOfContents.items && tableOfContents.items.length>0){
+        return (
+            <S.SectionTOC>
+                <TOCList items={tableOfContents.items} path={path}/>
+            </S.SectionTOC>
+        )
+    }else{
+        return (
+            <S.SectionTOC></S.SectionTOC>
+        )
+    }
+}
 
 TOCList.propTypes = {
     items: PropTypes.array,

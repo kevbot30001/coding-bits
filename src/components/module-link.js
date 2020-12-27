@@ -4,14 +4,21 @@ import { navigate } from "gatsby";
 
 import * as S from "./module-link.styles";
 
+import ArrowRight from "../svg/arrow-right.svg";
+
 const ModuleLink = ({ children, title, path }) => (
     <S.ModuleLinkBox onClick={()=>navigate(path)}>
-        <S.ModuleLinkTitle>
-            {title}
-        </S.ModuleLinkTitle>
-        <S.ModuleLinkExerpt>
-            {children}
-        </S.ModuleLinkExerpt>
+        <S.ModuleLinkContent>
+            <S.ModuleLinkTitle>
+                {title}
+            </S.ModuleLinkTitle>
+            <S.ModuleLinkDescription>
+                {children}
+            </S.ModuleLinkDescription>
+        </S.ModuleLinkContent>
+        <S.ModuleLinkIcon>
+            <ArrowRight/>
+        </S.ModuleLinkIcon>
     </S.ModuleLinkBox>
 )
 

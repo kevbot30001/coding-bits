@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import Scrollspy from 'react-scrollspy'
 
+export const SectionHiddenTOC = styled.div`
+    display: none;
+`
+
 export const SectionTOC = styled.div`
     position: fixed;
     margin-top: 4rem;
