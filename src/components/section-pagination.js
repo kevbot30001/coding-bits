@@ -71,6 +71,12 @@ const SectionPagination = ({ index, indexList }) => {
     }
 }
 
+SectionPaginationLink.propTypes = {
+    to: PropTypes.string,
+    title: PropTypes.string,
+    direction: PropTypes.string
+}
+
 SectionPagination.propTypes = {
     index: PropTypes.number,
     indexList: PropTypes.array

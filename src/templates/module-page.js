@@ -15,9 +15,10 @@ import SectionSidebar from '../components/section-sidebar';
 import SectionContentWrapper from '../components/section-content-wrapper';
 import SectionTOC from '../components/section-toc';
 import SectionPagination from '../components/section-pagination';
+import BlockLink from '../components/block-link';
 import { Link } from "gatsby"
 
-const shortcodes = { Link };
+const shortcodes = { Link, BlockLink };
 
 export default function Template({ data }){
     return (
