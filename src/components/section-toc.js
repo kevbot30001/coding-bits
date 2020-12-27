@@ -19,7 +19,7 @@ function flattenTOC(items,depth=0) {
 }
 
 const TOCList = ({ items, path }) => (
-    <S.TOCList items={flattenTOC(items).map(item => item.url.substring(1))} currentClassName="is-current">
+    <S.TOCList items={flattenTOC(items).map(item => item.url.substring(1))} currentClassName="is-current" offset={-15}>
         {flattenTOC(items).map(item => (
             <S.TOCItem key={item.url} style={{paddingLeft: `${0.85*(item.depth)+1.3}rem`}}>
                     <S.TOCItemLink to={path+item.url} title={item.title}>{item.title}</S.TOCItemLink>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SectionTitle = styled.h1`
     color: black;
-    font-size: 3rem;
+    font-size: 2.5rem;
 `
 
 export const SectionContent = styled.div`

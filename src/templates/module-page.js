@@ -14,6 +14,7 @@ import SectionHeader from "../components/section-header";
 import SectionSidebar from '../components/section-sidebar';
 import SectionContentWrapper from '../components/section-content-wrapper';
 import SectionTOC from '../components/section-toc';
+import SectionPagination from '../components/section-pagination';
 import { Link } from "gatsby"
 
 const shortcodes = { Link };
@@ -34,7 +35,7 @@ export default function Template({ data }){
                         <MDXProvider components={shortcodes}>
                             <MDXRenderer>{data.post.body}</MDXRenderer>
                         </MDXProvider>
-                        <Link to="/">Retour</Link>
+                        <SectionPagination index={data.post.frontmatter.sectionIndex} indexList={data.sectionIndexList.edges}/>
                     </SectionContentWrapper>
                 </PageMiddleWrapper>
                 <PageRightWrapper>

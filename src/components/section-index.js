@@ -30,8 +30,13 @@ const SectionIndex = ({ index }) => {
     )
 }
 
+SectionItem.propTypes = {
+    title: PropTypes.string,
+    path: PropTypes.string
+}
+
 SectionIndex.propTypes = {
-    module: PropTypes.string,
+    index: PropTypes.array,
 }
 
 export default SectionIndex;

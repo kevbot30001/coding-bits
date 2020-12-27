@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const ModuleLinkTitle = styled.h3`
-    color: black;
-    font-weight: bold;
+    color: inherit;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 0.25rem;
 `
 
@@ -11,13 +12,21 @@ export const ModuleLinkExerpt = styled.p`
 `
 
 export const ModuleLinkBox = styled.div`
-    border-radius: 8px;
+    color: #19191A;
+    border-radius: 2px;
     border-width: 1px;
     border-style: solid;
-    border-color: rgba(100,100,100,1);
-    background-color: rgba(255,255,255,1);
-    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);
+    border-color: #CAD0D5;
+    background-color: white;
     cursor: pointer;
     margin-bottom: 1rem;
-    padding: 1rem 1rem;
+    padding: 1.25rem;
+    transition: color 0.1s ease-in;
+    transition: border-color 0.1s ease-in;
+    &:hover{
+        transition: color 0.1s ease-in;
+        transition: border-color 0.1s ease-in;
+        color: black;
+        border-color: black;
+    }
 `
