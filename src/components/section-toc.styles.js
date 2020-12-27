@@ -12,6 +12,22 @@ export const SectionTOC = styled.div`
     border-left: 1px solid #e1e8ed;
 `
 
+export const TOCTitle = styled.div`
+    display: flex;
+    color: #9DAAB6;
+    padding-left: 1.3rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    font-size: 0.7rem;
+    .icon{
+        margin-right: 0.4rem;
+    }
+    svg{
+        fill: #9DAAB6; 
+    }
+`
+
 export const TOCList = styled(Scrollspy)`
     list-style-type: none;
     margin-top: 0rem;

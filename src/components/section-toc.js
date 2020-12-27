@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import * as S from "./section-toc.styles";
 
+import ListOrdered from "../svg/list-ordered.svg";
+
 function flattenTOC(items,depth=0) {
     let flattened = [];
     items.forEach(item => {
@@ -33,6 +35,7 @@ const SectionTOC = ({ tableOfContents, path }) => {
     if(tableOfContents.items && tableOfContents.items.length>0){
         return (
             <S.SectionTOC>
+                <S.TOCTitle><ListOrdered className="icon"/>CONTENU</S.TOCTitle>
                 <TOCList items={tableOfContents.items} path={path}/>
             </S.SectionTOC>
         )
