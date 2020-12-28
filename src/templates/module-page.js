@@ -18,11 +18,13 @@ import SectionPagination from '../components/section-pagination';
 
 import BlockLink from '../components/block-link';
 import CodeBlock from '../components/code-block';
+import P5WrapperElement from '../components/p5-wrapper';
 import { Link } from "gatsby"
 
 const shortcodes = { 
     Link, 
     BlockLink, 
+    P5WrapperElement,
     pre: preProps => {
         let props = preProps.children.props;
         return (

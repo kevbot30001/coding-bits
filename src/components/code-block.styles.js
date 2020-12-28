@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-export const Pre = styled.pre`
+export const Wrapper = styled.div`
+	display: grid;
 	position: relative;
-	text-align: left;
 	margin-bottom: 1.45rem;
-	padding: 1rem;
-	overflow: auto;
-	font-size: 1.2rem;
 	&::before {
+		z-index: 5;
 		background: black;
 		border-radius: 0 0 0.3rem 0.3rem;
 		font-size: 0.9rem;
@@ -25,6 +23,7 @@ export const Pre = styled.pre`
 			background: #2b7489;
 			color: white;
 		}
+
 	}
 	&[class~="language-js"]{
 		&::before{
@@ -32,11 +31,22 @@ export const Pre = styled.pre`
 			background: #f1e05a;
 			color: black;
 		}
+
 	}
+`;
+
+export const Pre = styled.pre`
+	position: relative;
+	text-align: left;
+	padding: 1rem;
+	overflow: auto;
+	font-size: 1.2rem;
+	margin-bottom: 0;
 `;
 
 export const Line = styled.div`
 	display: table-row;
+	min-width: 0;
 `;
 
 export const LineNo = styled.span`

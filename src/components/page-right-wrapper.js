@@ -7,6 +7,9 @@ const PageRightWrapper = styled.div`
     padding: 0;
     flex: 0 0 auto;
     min-height: calc(100vh - 65px);
+    @media only screen and (max-width: 1280px) {
+        display: none;
+    }
 `;
 
 export default PageRightWrapper;

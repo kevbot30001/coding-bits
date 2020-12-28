@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 export const HeaderWrapper = styled.header`
+  z-index: 15;
   background-color: rgba(255,255,255,0.9);
   backdrop-filter: blur(8px);
   position: fixed;

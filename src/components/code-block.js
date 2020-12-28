@@ -29,24 +29,26 @@ const CodeBlock = ({ children, className, metastring }) => {
     return (
         <Highlight {...defaultProps} code={children.trim()} language={language} theme={vsDark}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                <S.Pre className={className} style={style}>
-                    {tokens.map((line, i) => {
-                        let highlightClass = "";
-                        if (shouldHighlightLine(i)) {
-                            highlightClass = `highlight-line`;
-                        }
-                        return (
-                            <S.Line key={i} {...getLineProps({ line, key: i })}>
-                                <S.LineNo>{i + 1}</S.LineNo>
-                                <S.LineContent className={highlightClass}>
-                                    {line.map((token, key) => (
-                                        <span key={key} {...getTokenProps({ token, key })} />
-                                    ))}
-                                </S.LineContent>
-                            </S.Line>
-                        )
-                    })}
-                </S.Pre>
+                <S.Wrapper className={className} >
+                    <S.Pre style={style}>
+                        {tokens.map((line, i) => {
+                            let highlightClass = "";
+                            if (shouldHighlightLine(i)) {
+                                highlightClass = `highlight-line`;
+                            }
+                            return (
+                                <S.Line key={i} {...getLineProps({ line, key: i })}>
+                                    <S.LineNo>{i + 1}</S.LineNo>
+                                    <S.LineContent className={highlightClass}>
+                                        {line.map((token, key) => (
+                                            <span key={key} {...getTokenProps({ token, key })} />
+                                        ))}
+                                    </S.LineContent>
+                                </S.Line>
+                            )
+                        })}
+                    </S.Pre>
+                </S.Wrapper>
             )}
         </Highlight>
     );
