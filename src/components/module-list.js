@@ -8,13 +8,14 @@ const ModuleList = () => {
     const data = useStaticQuery(
         graphql`
             query {
-                allMdx(filter: {frontmatter: {sectionIndex: {eq: 0}}}, sort: {fields: frontmatter___moduleIndex, order: ASC}) {
+                allMdx(filter: {frontmatter: {moduleHeader: {eq: true}}}, sort: {fields: frontmatter___moduleIndex, order: ASC}) {
                     edges {
                         node {
                             id
                             excerpt
                             frontmatter {
                                 date
+                                moduleHeader
                                 moduleTitle
                                 moduleIndex
                                 path
@@ -31,7 +32,6 @@ const ModuleList = () => {
     return (
         <S.ModuleList>
             {modules
-                .filter(mod => mod.node.frontmatter.moduleTitle.length > 0)
                 .map(({ node: mod }) => {
                     return (
                         <ModuleLink key={mod.id} title={mod.frontmatter.moduleTitle} path={mod.frontmatter.path}>
